@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: neuroguard-api
+    env: docker
+    region: frankfurt
+    plan: free
+    rootDir: neuroguard-cloud/backend
+    dockerfilePath: ./neuroguard-cloud/backend/Dockerfile
+    autoDeploy: true
+
+  - type: static
+    name: neuroguard-frontend
+    env: static
+    buildCommand: npm install && npm run build
+    publishPath: ./neuroguard-cloud/frontend/dist
+    rootDir: neuroguard-cloud/frontend
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
