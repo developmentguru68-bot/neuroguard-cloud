@@ -7,7 +7,7 @@ export default function App() {
   const uploadFile = async () => {
     const formData = new FormData();
     formData.append("file", file);
-    const res = await fetch("https://neuroguard-api.onrender.com/analyze", {
+    const res = await fetch("https://neuroguard-cloud.onrender.com/analyze", {
       method: "POST",
       body: formData,
     });
@@ -45,3 +45,4 @@ export default function App() {
     </div>
   );
 }
+
