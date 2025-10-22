@@ -34,7 +34,7 @@ export default function App() {
         <div className="mt-4 p-4 bg-white shadow rounded">
           <p><b>Prediction:</b> {result.prediction}</p>
           <a
-            href={`https://neuroguard-api.onrender.com${result.pdf_url}`}
+            href={`https://neuroguard-cloud.onrender.com${result.pdf_url}`}
             className="text-blue-600 underline"
             target="_blank"
           >
@@ -45,4 +45,5 @@ export default function App() {
     </div>
   );
 }
+
 
