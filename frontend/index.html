@@ -3,110 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neuroguard - Ihre KI-gestützte SaaS-Lösung</title>
+    <title>Neuroguard - KI-gestützte Datenanalyse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        } 
+            font-family: 'Inter', sans-serif;
+        }
 
         body {
             line-height: 1.6;
-            color: #333;
+            color: #2d3748;
         }
 
         header {
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            background: linear-gradient(135deg, #1e40af, #60a5fa);
             color: white;
             text-align: center;
-            padding: 4rem 1rem;
+            padding: 5rem 1rem;
+            position: relative;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
+            font-weight: 700;
             margin-bottom: 1rem;
         }
 
         header p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
         }
 
         .cta-button {
             background: #f97316;
             color: white;
-            padding: 0.8rem 2rem;
+            padding: 1rem 2rem;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.2s;
         }
 
         .cta-button:hover {
             background: #ea580c;
+            transform: translateY(-2px);
         }
 
         section {
-            padding: 3rem 1rem;
+            padding: 4rem 1rem;
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
         }
 
-        #features h2, #pricing h2, #testimonials h2, #contact h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #1e40af;
         }
 
         .feature-grid, .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
         }
 
         .feature-card, .pricing-card {
-            background: #f9f9f9;
+            background: white;
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover, .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card img {
+            width: 50px;
+            margin-bottom: 1rem;
         }
 
         .pricing-card {
-            border: 1px solid #ddd;
+            border: 2px solid #e5e7eb;
         }
 
         .pricing-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
         }
 
         .pricing-card p.price {
-            font-size: 2rem;
-            color: #1e3a8a;
+            font-size: 2.2rem;
+            color: #1e40af;
+            font-weight: 700;
             margin-bottom: 1rem;
         }
 
         .testimonial {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto 2rem;
             font-style: italic;
+            background: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        #demo {
+            background: #f9fafb;
+        }
+
+        #demo #root {
+            max-width: 800px;
+            margin: 0 auto;
+            min-height: 400px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
         }
 
         footer {
-            background: #1e3a8a;
+            background: #1e40af;
             color: white;
             text-align: center;
-            padding: 1rem;
+            padding: 2rem;
             margin-top: 2rem;
+        }
+
+        footer a {
+            color: #f97316;
+            text-decoration: none;
+            margin: 0 0.5rem;
         }
 
         @media (max-width: 768px) {
             header h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
             header p {
@@ -116,56 +156,123 @@
             section {
                 padding: 2rem 1rem;
             }
+
+            h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
-        <h1>Neuroguard - KI-gestützte Analysen für Ihren Erfolg</h1>
-        <p>Nutzen Sie die Kraft der Künstlichen Intelligenz, um präzise Datenanalysen und Vorhersagen zu erstellen.</p>
-        <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView()">Kostenlos testen</button>
+        <h1>Neuroguard - KI für präzise Datenanalysen</h1>
+        <p>Transformieren Sie Ihre Daten in wertvolle Erkenntnisse mit unserer KI-gestützten SaaS-Lösung. Ideal für Unternehmen im Gesundheitswesen, in der Fertigung und mehr.</p>
+        <button class="cta-button" onclick="document.getElementById('demo').scrollIntoView()">Demo testen</button>
     </header>
 
     <!-- Features -->
     <section id="features">
-        <h2>Warum Neuroguard?</h2>
+        <h2>Unsere Kernfunktionen</h2>
         <div class="feature-grid">
             <div class="feature-card">
-                <h3>Präzise Analysen</h3>
-                <p>Erhalten Sie tiefgehende Einblicke durch fortschrittliche KI-Modelle, die Ihre Daten in Echtzeit verarbeiten.</p>
+                <img src="https://via.placeholder.com/50?text=KI" alt="KI-Icon">
+                <h3>Fortschrittliche KI-Modelle</h3>
+                <p>Nutzen Sie modernste Algorithmen für präzise Vorhersagen und Datenanalysen, z. B. in der Bildverarbeitung oder Zeitreihenanalyse.</p>
             </div>
             <div class="feature-card">
-                <h3>Benutzerfreundlich</h3>
-                <p>Eine intuitive Plattform, die keine technischen Vorkenntnisse erfordert.</p>
+                <img src="https://via.placeholder.com/50?text=UX" alt="UX-Icon">
+                <h3>Intuitive Benutzeroberfläche</h3>
+                <p>Keine Programmierkenntnisse nötig – unsere Plattform ist für alle Nutzer zugänglich.</p>
             </div>
             <div class="feature-card">
-                <h3>Skalierbar</h3>
-                <p>Passen Sie Neuroguard an die Bedürfnisse Ihres Unternehmens an – von Startups bis Großkonzernen.</p>
+                <img src="https://via.placeholder.com/50?text=Skala" alt="Skala-Icon">
+                <h3>Skalierbare Lösungen</h3>
+                <p>Von kleinen Teams bis zu Großunternehmen – Neuroguard passt sich Ihren Anforderungen an.</p>
+            </div>
+            <div class="feature-card">
+                <img src="https://via.placeholder.com/50?text=Sicherheit" alt="Sicherheit-Icon">
+                <h3>Daten- und Datenschutz</h3>
+                <p>Höchste Sicherheitsstandards und DSGVO-Konformität für Ihre sensiblen Daten.</p>
             </div>
         </div>
-    
+    </section>
+
+    <!-- Chart: Vorteile von Neuroguard -->
+    <section id="benefits">
+        <h2>Warum Neuroguard?</h2>
+        <p>Unsere KI-Lösung spart Zeit und steigert die Genauigkeit Ihrer Analysen im Vergleich zu traditionellen Methoden.</p>
+        ```chartjs
+        {
+            "type": "bar",
+            "data": {
+                "labels": ["Manuelle Analyse", "Standard-Software", "Neuroguard"],
+                "datasets": [{
+                    "label": "Zeitersparnis (%)",
+                    "data": [20, 50, 90],
+                    "backgroundColor": ["#ef4444", "#3b82f6", "#10b981"],
+                    "borderColor": ["#b91c1c", "#1e40af", "#047857"],
+                    "borderWidth": 1
+                }, {
+                    "label": "Genauigkeit (%)",
+                    "data": [60, 75, 95],
+                    "backgroundColor": ["#ef4444", "#3b82f6", "#10b981"],
+                    "borderColor": ["#b91c1c", "#1e40af", "#047857"],
+                    "borderWidth": 1
+                }]
+            },
+            "options": {
+                "scales": {
+                    "y": {
+                        "beginAtZero": true,
+                        "title": {
+                            "display": true,
+                            "text": "Prozentsatz"
+                        }
+                    }
+                },
+                "plugins": {
+                    "legend": {
+                        "position": "top"
+                    },
+                    "title": {
+                        "display": true,
+                        "text": "Vergleich: Zeitersparnis und Genauigkeit"
+                    }
+                }
+            }
+        }
+        ```
+    </section>
+
+    <!-- Demo -->
+    <section id="demo">
+        <h2>Testen Sie Neuroguard live</h2>
+        <p>Erleben Sie die Leistung unserer Plattform direkt in Ihrem Browser. Laden Sie Ihre Daten hoch und sehen Sie, wie Neuroguard präzise Analysen liefert.</p>
+        <div id="root"></div>
+        <script type="module" src="/src/main.jsx"></script>
+    </section>
 
     <!-- Pricing -->
     <section id="pricing">
         <h2>Preispläne</h2>
         <div class="pricing-grid">
             <div class="pricing-card">
-                <h3>Basic</h3>
-                <p class="price">29 €/Monat</p>
-                <p>Grundlegende Analysen, bis zu 1.000 Datensätze, E-Mail-Support.</p>
+                <h3>Starter</h3>
+                <p class="price">49 €/Monat</p>
+                <p>Grundlegende KI-Analysen, bis zu 5.000 Datensätze, E-Mail-Support, 1 Benutzer.</p>
                 <button class="cta-button">Jetzt starten</button>
             </div>
             <div class="pricing-card">
                 <h3>Pro</h3>
-                <p class="price">99 €/Monat</p>
-                <p>Erweiterte KI-Modelle, bis zu 10.000 Datensätze, Prioritäts-Support.</p>
+                <p class="price">149 €/Monat</p>
+                <p>Erweiterte KI-Modelle, bis zu 50.000 Datensätze, Prioritäts-Support, 5 Benutzer.</p>
                 <button class="cta-button">Jetzt starten</button>
             </div>
             <div class="pricing-card">
                 <h3>Enterprise</h3>
                 <p class="price">Individuell</p>
-                <p>Maßgeschneiderte Lösungen, unbegrenzte Datensätze, dedizierter Support.</p>
+                <p>Maßgeschneiderte Lösungen, unbegrenzte Datensätze, dedizierter Support, API-Zugang.</p>
                 <button class="cta-button">Kontaktieren Sie uns</button>
             </div>
         </div>
@@ -175,38 +282,36 @@
     <section id="testimonials">
         <h2>Was unsere Kunden sagen</h2>
         <div class="testimonial">
-            <p>"Neuroguard hat unsere Datenanalyse revolutioniert. Die Ergebnisse sind präzise und die Plattform ist kinderleicht zu bedienen!"</p>
-            <p><strong>Anna Müller, CEO von DataCorp</strong></p>
+            <p>"Neuroguard hat unsere Bildanalysen im Gesundheitswesen transformiert. Die Genauigkeit ist unübertroffen!"</p>
+            <p><strong>Dr. Maria Klein, Radiologin</strong></p>
         </div>
         <div class="testimonial">
-            <p>"Dank Neuroguard konnten wir unsere Prozesse optimieren und Kosten senken."</p>
-            <p><strong>Dr. Peter Schmidt, Gesundheitswesen</strong></p>
+            <p>"Die Plattform ist intuitiv und hat unsere Produktionsprozesse optimiert."</p>
+            <p><strong>Thomas Weber, Fertigungsleiter</strong></p>
         </div>
     </section>
 
     <!-- Contact -->
     <section id="contact">
         <h2>Kontaktieren Sie uns</h2>
-        <p>Starten Sie noch heute und entdecken Sie die Möglichkeiten mit Neuroguard!</p>
-        <form style="max-width: 500px; margin: 0 auto;">
-            <input type="text" placeholder="Name" style="width: 100%; padding: 0.5rem; margin: 0.5rem 0; border-radius: 5px; border: 1px solid #ddd;">
-            <input type="email" placeholder="E-Mail" style="width: 100%; padding: 0.5rem; margin: 0.5rem 0; border-radius: 5px; border: 1px solid #ddd;">
-            <textarea placeholder="Ihre Nachricht" style="width: 100%; padding: 0.5rem; margin: 0.5rem 0; border-radius: 5px; border: 1px solid #ddd;"></textarea>
+        <p>Haben Sie Fragen oder möchten Sie eine maßgeschneiderte Lösung? Schreiben Sie uns!</p>
+        <form style="max-width: 600px; margin: 0 auto;">
+            <input type="text" placeholder="Name" style="width: 100%; padding: 0.8rem; margin: 0.5rem 0; border-radius: 8px; border: 1px solid #d1d5db;">
+            <input type="email" placeholder="E-Mail" style="width: 100%; padding: 0.8rem; margin: 0.5rem 0; border-radius: 8px; border: 1px solid #d1d5db;">
+            <textarea placeholder="Ihre Nachricht" rows="5" style="width: 100%; padding: 0.8rem; margin: 0.5rem 0; border-radius: 8px; border: 1px solid #d1d5db;"></textarea>
             <button type="submit" class="cta-button">Absenden</button>
         </form>
-        
-   
-<div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
     </section>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Neuroguard. Alle Rechte vorbehalten.</p>
-        <p><a href="#" style="color: #f97316;">Datenschutz</a> | <a href="#" style="color: #f97316;">AGB</a></p>
+        <p><a href="#">Datenschutz</a> | <a href="#">AGB</a> | <a href="#">Support</a></p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Smooth Scroll für CTA-Buttons
+        // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -218,11 +323,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
