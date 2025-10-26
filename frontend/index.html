@@ -130,6 +130,11 @@
             border-radius: 8px;
         }
 
+        #benefits canvas {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
         footer {
             background: #1e40af;
             color: white;
@@ -202,47 +207,7 @@
     <section id="benefits">
         <h2>Warum Neuroguard?</h2>
         <p>Unsere KI-Lösung spart Zeit und steigert die Genauigkeit Ihrer Analysen im Vergleich zu traditionellen Methoden.</p>
-        ```chartjs
-        {
-            "type": "bar",
-            "data": {
-                "labels": ["Manuelle Analyse", "Standard-Software", "Neuroguard"],
-                "datasets": [{
-                    "label": "Zeitersparnis (%)",
-                    "data": [20, 50, 90],
-                    "backgroundColor": ["#ef4444", "#3b82f6", "#10b981"],
-                    "borderColor": ["#b91c1c", "#1e40af", "#047857"],
-                    "borderWidth": 1
-                }, {
-                    "label": "Genauigkeit (%)",
-                    "data": [60, 75, 95],
-                    "backgroundColor": ["#ef4444", "#3b82f6", "#10b981"],
-                    "borderColor": ["#b91c1c", "#1e40af", "#047857"],
-                    "borderWidth": 1
-                }]
-            },
-            "options": {
-                "scales": {
-                    "y": {
-                        "beginAtZero": true,
-                        "title": {
-                            "display": true,
-                            "text": "Prozentsatz"
-                        }
-                    }
-                },
-                "plugins": {
-                    "legend": {
-                        "position": "top"
-                    },
-                    "title": {
-                        "display": true,
-                        "text": "Vergleich: Zeitersparnis und Genauigkeit"
-                    }
-                }
-            }
-        }
-        ```
+        <canvas id="benefitsChart" width="400" height="200"></canvas>
     </section>
 
     <!-- Demo -->
@@ -320,6 +285,49 @@
                 });
             });
         });
+
+        // Render Chart.js
+        const ctx = document.getElementById('benefitsChart').getContext('2d');
+        const chartData = {
+            type: 'bar',
+            data: {
+                labels: ['Manuelle Analyse', 'Standard-Software', 'Neuroguard'],
+                datasets: [{
+                    label: 'Zeitersparnis (%)',
+                    data: [20, 50, 90],
+                    backgroundColor: ['#ef4444', '#3b82f6', '#10b981'],
+                    borderColor: ['#b91c1c', '#1e40af', '#047857'],
+                    borderWidth: 1
+                }, {
+                    label: 'Genauigkeit (%)',
+                    data: [60, 75, 95],
+                    backgroundColor: ['#ef4444', '#3b82f6', '#10b981'],
+                    borderColor: ['#b91c1c', '#1e40af', '#047857'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Prozentsatz'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Vergleich: Zeitersparnis und Genauigkeit'
+                    }
+                }
+            }
+        };
+        new Chart(ctx, chartData);
     </script>
 </body>
 </html>
