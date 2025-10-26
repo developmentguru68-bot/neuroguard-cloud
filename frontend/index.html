@@ -23,7 +23,6 @@
             color: white;
             text-align: center;
             padding: 5rem 1rem;
-            position: relative;
         }
 
         header h1 {
@@ -88,8 +87,9 @@
             transform: translateY(-5px);
         }
 
-        .feature-card img {
-            width: 50px;
+        .feature-icon {
+            width: 60px;
+            height: 60px;
             margin-bottom: 1rem;
         }
 
@@ -181,29 +181,47 @@
         <h2>Unsere Kernfunktionen</h2>
         <div class="feature-grid">
             <div class="feature-card">
-                <img src="https://via.placeholder.com/50?text=KI" alt="KI-Icon">
+                <svg class="feature-icon" viewBox="0 0 64 64" fill="none">
+                    <path d="M32 4C18 4 8 14 8 28v8c0 14 10 24 24 24s24-10 24-24v-8C56 14 46 4 32 4z" fill="#60a5fa" stroke="#1e3a8a" stroke-width="2"/>
+                    <circle cx="32" cy="32" r="6" fill="#f97316"/>
+                </svg>
                 <h3>Fortschrittliche KI-Modelle</h3>
                 <p>Nutzen Sie modernste Algorithmen für präzise Vorhersagen und Datenanalysen, z. B. in der Bildverarbeitung oder Zeitreihenanalyse.</p>
             </div>
             <div class="feature-card">
-                <img src="https://via.placeholder.com/50?text=UX" alt="UX-Icon">
+                <svg class="feature-icon" viewBox="0 0 64 64" fill="none">
+                    <rect x="8" y="10" width="48" height="44" rx="6" fill="#34d399" stroke="#065f46" stroke-width="2"/>
+                    <rect x="14" y="16" width="36" height="8" rx="2" fill="#a7f3d0"/>
+                    <circle cx="20" cy="38" r="4" fill="#10b981"/>
+                    <rect x="28" y="34" width="20" height="8" rx="2" fill="#6ee7b7"/>
+                </svg>
                 <h3>Intuitive Benutzeroberfläche</h3>
                 <p>Keine Programmierkenntnisse nötig – unsere Plattform ist für alle Nutzer zugänglich.</p>
             </div>
             <div class="feature-card">
-                <img src="https://via.placeholder.com/50?text=Skala" alt="Skala-Icon">
+                <svg class="feature-icon" viewBox="0 0 64 64" fill="none">
+                    <path d="M8 48L28 28l10 10 18-18" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="8" cy="48" r="4" fill="#3b82f6"/>
+                    <circle cx="28" cy="28" r="4" fill="#60a5fa"/>
+                    <circle cx="38" cy="38" r="4" fill="#1d4ed8"/>
+                    <circle cx="56" cy="20" r="4" fill="#f97316"/>
+                </svg>
                 <h3>Skalierbare Lösungen</h3>
                 <p>Von kleinen Teams bis zu Großunternehmen – Neuroguard passt sich Ihren Anforderungen an.</p>
             </div>
             <div class="feature-card">
-                <img src="https://via.placeholder.com/50?text=Sicherheit" alt="Sicherheit-Icon">
+                <svg class="feature-icon" viewBox="0 0 64 64" fill="none">
+                    <rect x="14" y="28" width="36" height="28" rx="4" fill="#60a5fa" stroke="#1e3a8a" stroke-width="2"/>
+                    <path d="M24 28V20a8 8 0 0116 0v8" stroke="#1e3a8a" stroke-width="2"/>
+                    <circle cx="32" cy="42" r="4" fill="#f97316"/>
+                </svg>
                 <h3>Daten- und Datenschutz</h3>
                 <p>Höchste Sicherheitsstandards und DSGVO-Konformität für Ihre sensiblen Daten.</p>
             </div>
         </div>
     </section>
 
-    <!-- Chart: Vorteile von Neuroguard -->
+    <!-- Chart -->
     <section id="benefits">
         <h2>Warum Neuroguard?</h2>
         <p>Unsere KI-Lösung spart Zeit und steigert die Genauigkeit Ihrer Analysen im Vergleich zu traditionellen Methoden.</p>
@@ -256,7 +274,7 @@
         </div>
     </section>
 
-    <!-- Contact -->
+    <!-- Kontakt -->
     <section id="contact">
         <h2>Kontaktieren Sie uns</h2>
         <p>Haben Sie Fragen oder möchten Sie eine maßgeschneiderte Lösung? Schreiben Sie uns!</p>
@@ -276,17 +294,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Render Chart.js
         const ctx = document.getElementById('benefitsChart').getContext('2d');
         const chartData = {
             type: 'bar',
@@ -296,34 +303,21 @@
                     label: 'Zeitersparnis (%)',
                     data: [20, 50, 90],
                     backgroundColor: ['#ef4444', '#3b82f6', '#10b981'],
-                    borderColor: ['#b91c1c', '#1e40af', '#047857'],
                     borderWidth: 1
                 }, {
                     label: 'Genauigkeit (%)',
                     data: [60, 75, 95],
-                    backgroundColor: ['#ef4444', '#3b82f6', '#10b981'],
-                    borderColor: ['#b91c1c', '#1e40af', '#047857'],
+                    backgroundColor: ['#f87171', '#60a5fa', '#34d399'],
                     borderWidth: 1
                 }]
             },
             options: {
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Prozentsatz'
-                        }
-                    }
+                    y: { beginAtZero: true, title: { display: true, text: 'Prozentsatz' } }
                 },
                 plugins: {
-                    legend: {
-                        position: 'top'
-                    },
-                    title: {
-                        display: true,
-                        text: 'Vergleich: Zeitersparnis und Genauigkeit'
-                    }
+                    legend: { position: 'top' },
+                    title: { display: true, text: 'Vergleich: Zeitersparnis und Genauigkeit' }
                 }
             }
         };
