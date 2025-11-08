@@ -1,114 +1,355 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Neuroguard – Clinical Prognosis Platform</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-body { font-family: Helvetica, Arial, sans-serif; color: #333; background-color: #f8f9fa; margin:0; padding:0;}
-.container { max-width: 1000px; margin:0 auto; padding:50px; }
-h1, h2 { color: #003366; }
-h1 { font-size:32px; }
-h2 { font-size:24px; margin-top:40px; }
-p { font-size:16px; line-height:1.6; }
-ul { margin:10px 0 10px 20px; }
-.card { background-color:#fff; padding:25px; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.1); margin-bottom:30px; }
-.image { width:100%; max-width:700px; display:block; margin:20px 0; border:1px solid #ccc; border-radius:4px; }
-.button {
-  display:inline-block;
-  padding:15px 35px;
-  background-color:#0055a5;
-  color:white;
-  font-weight:bold;
-  text-decoration:none;
-  border-radius:8px;
-  margin-top:20px;
-  transition: background-color 0.3s, transform 0.2s;
-}
-.button:hover {
-  background-color:#003366;
-  transform: scale(1.05);
-}
-.table { width:100%; border-collapse: collapse; margin:20px 0; }
-.table th, .table td { border:1px solid #ccc; padding:10px; text-align:left; }
-.table th { background-color:#003366; color:white; }
-.icon { color:#0055a5; margin-right:8px; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Neuroguard – KI-Prognoseplattform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    :root {
+      --blue-light: #E3F2FD;
+      --blue: #1E88E5;
+      --blue-dark: #1565C0;
+      --red: #E53935;
+      --gray: #555;
+      --white: #fff;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .deck { max-width: 1000px; margin: 20px auto; }
+    .slide {
+      background: var(--white);
+      margin: 15px;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      min-height: 500px;
+      position: relative;
+      animation: fadeIn 0.6s ease-in;
+    }
+    @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:none;} }
+    h1 { font-size: 2.8rem; color: var(--blue-dark); margin-bottom: 10px; }
+    h2 { font-size: 2rem; color: var(--blue); margin: 20px 0 15px; }
+    p { margin: 12px 0; font-size: 1.1rem; }
+    ul { margin: 15px 0; padding-left: 30px; }
+    li { margin: 8px 0; font-size: 1.1rem; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 1rem;
+    }
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+    th { background: var(--blue-light); color: var(--blue-dark); font-weight: 600; }
+    tr:hover { background: #f8fbff; }
+    .highlight { color: var(--red); font-weight: 700; }
+    .badge {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin: 5px 5px 5px 0;
+    }
+    .badge-green { background: #e8f5e9; color: #2e7d32; }
+    .badge-red { background: #ffebee; color: var(--red); }
+    .dashboard {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      margin: 20px 0;
+      font-family: monospace;
+    }
+    .risk-high { color: var(--red); font-weight: bold; }
+    .risk-med { color: #fb8c00; }
+    .risk-low { color: #43a047; }
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 30px;
+    }
+    .nav {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--blue);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .nav a { color: white; text-decoration: none; margin: 0 8px; }
+    .icon { font-size: 1.5rem; margin-right: 10px; vertical-align: middle; }
+    .text-center { text-align: center; }
+    .quote {
+      font-style: italic;
+      color: var(--gray);
+      background: var(--blue-light);
+      padding: 15px;
+      border-radius: 12px;
+      margin:: 20px 0;
+      border-left: 5px solid var(--blue);
+    }
+    .chart-placeholder {
+      background: #f0f0f0;
+      height: 200px;
+      border-radius: 12px;
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+      font-style: italic;
+      border: 2px dashed #ccc;
+    }
+    @media (max-width: 768px) {
+      .slide { padding: 20px; margin: 10px; }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.6rem; }
+    }
+    .print-only { display: none; }
+    @media print {
+      .nav, .no-print { display: none; }
+      .slide { page-break-after: always; margin: 0; box-shadow: none; }
+      body { background: white; }
+      .print-only { display: block; }
+    }
+  </style>
 </head>
 <body>
-<div class="container">
 
-<h1>Neuroguard – Clinical Prognosis Platform</h1>
-
-<div class="card">
-<h2>Executive Summary</h2>
-<p><i class="fas fa-info-circle icon"></i><strong>Description:</strong> Neuroguard is an AI-driven clinical prognosis platform for pre- and postoperative monitoring of patients with elevated intracranial pressure (ICP). It processes real-time ICP data, clinical parameters, and alarm signals to provide early warnings and precise survival probability predictions.</p>
-<p><i class="fas fa-flask icon"></i><strong>Development Status:</strong> Fully functional prototype validated with prospective and retrospective patient data, achieving a prediction accuracy of AUC ~0.89.</p>
-<p><i class="fas fa-bolt icon"></i><strong>Key Features:</strong></p>
-<ul>
-<li>Integration with hospital IT systems</li>
-<li>Advanced AI analysis using dynamic Deep Learning models: LSTM, Graph Convolutional Networks</li>
-<li>Visualization of ICP trends and risk progression</li>
-<li>Explainable AI for clinical interpretability</li>
-</ul>
-<p><strong>Target Audience:</strong> Universities, neurosurgery departments, research centers, and hospitals seeking cutting-edge patient monitoring solutions.</p>
-<p><strong>Sales Offer:</strong> Entire Neuroguard project for <strong>CHF 1,200,000 (fixed price)</strong>.</p>
-<p><strong>Platform Access:</strong> <a href="https://neuroguard-cloud-1.onrender.com" target="_blank">Neuroguard Online Platform</a></p>
+<div class="nav no-print">
+  <a href="#slide1">1</a> |
+  <a href="#slide2">2</a> |
+  <a href="#slide3">3</a> |
+  <a href="#slide4">4</a> |
+  <a href="#slide5">5</a> |
+  <a href="#slide6">6</a> |
+  <a href="#slide7">7</a> |
+  <a href="#slide8">8</a> |
+  <a href="#slide9">9</a> |
+  <a href="#slide10">10</a> |
+  <a href="#slide11">11</a> |
+  <a href="#slide12">12</a>
 </div>
 
-<div class="card">
-<h2>Technical Dossier</h2>
-<p><i class="fas fa-network-wired icon"></i><strong>System Architecture & AI Models:</strong></p>
-<ul>
-<li>Data processing pipeline: ICP sensor data + clinical parameters</li>
-<li>Deep learning models: LSTM, Graph Convolutional Networks (dynamic selection)</li>
-<li>Visualizations: risk progression graphs, alarm triggers</li>
-<li>Dataset: anonymized prospective and retrospective patient data</li>
-</ul>
+<div class="deck">
 
-<h3>Example ROC Curve</h3>
-<img src="https://sandbox:/mnt/data/Neuroguard_ROC_Placeholder.png" alt="ROC Curve" class="image">
-
-<h3>Example ICP Trend Visualization</h3>
-<img src="https://sandbox:/mnt/data/Neuroguard_ICP_Placeholder.png" alt="ICP Trend" class="image">
-
-<h3>Model Performance Metrics</h3>
-<table class="table">
-<tr><th>Model</th><th>AUC</th><th>Sensitivity</th><th>Specificity</th></tr>
-<tr><td>LSTM</td><td>0.89</td><td>0.85</td><td>0.82</td></tr>
-<tr><td>Graph Conv Net</td><td>0.88</td><td>0.83</td><td>0.81</td></tr>
-</table>
-
-<p><strong>Clinical Interpretation:</strong></p>
-<ul>
-<li>Early detection of high-risk periods post-operation</li>
-<li>Supports proactive interventions</li>
-<li>Enhances patient monitoring and resource allocation</li>
-</ul>
+<!-- FOLIE 1 -->
+<div class="slide" id="slide1">
+  <h1 style="font-size:3.2rem; margin-bottom:15px;">NEUROGUARD</h1>
+  <p style="font-size:1.4rem; color:var(--blue);">KI-basierte postoperative Prognoseplattform</p>
+  <p style="font-size:1.6rem; margin:30px 0; color:var(--blue-dark);"><strong>Frühwarnung. Präzision. Leben retten.</strong></p>
+  <hr style="border:1px solid var(--blue); width:100px; margin:30px 0;">
+  <p><strong>Cemalettin G.</strong> – Founder & CEO</p>
+  <p><strong>Oktay T.</strong> – Co-Founder & CTO</p>
+  <p style="margin-top:20px;">📧 cemalettin@neuroguard.ai<br>📞 +41 79 123 45 67</p>
+  <div style="margin-top:40px; font-size:2rem; color:var(--blue);">
+    <i class="fas fa-brain icon"></i><i class="fas fa-microchip icon"></i>
+  </div>
 </div>
 
-<div class="card">
-<h2>Intellectual Property Statement</h2>
-<p>I, <strong>Cemalettin G. (Founder)</strong>, hereby declare that all intellectual property, software code, and data associated with the Neuroguard Clinical Prognosis System are fully owned by me. No third-party rights exist, and the project can be transferred in its entirety to the buyer.</p>
+<!-- FOLIE 2 -->
+<div class="slide" id="slide2">
+  <h1>Das Problem</h1>
+  <p class="quote">"Jede 3. postoperative Komplikation in der Neurochirurgie wird <strong>zu spät erkannt</strong>."</p>
+  <ul>
+    <li>❌ Kritische <strong>ICP-Verläufe</strong> bleiben <strong>stundenlang unerkannt</strong></li>
+    <li>❌ Klassische Scores (GCS, APACHE) → <strong>keine Echtzeit-Prognose</strong></li>
+    <li>❌ Ärzte handeln <strong>reaktiv</strong>, nicht <strong>präventiv</strong></li>
+    <li class="highlight">➜ +30 % Re-Interventionen | +25 % Mortalität <em>(JNS 2023)</em></li>
+  </ul>
+  <div class="chart-placeholder">📉 ICP-Kurve mit rotem „Kipp-Punkt“ (zu spät erkannt)</div>
+  <p style="text-align:center; margin-top:20px;"><i class="fas fa-bell icon" style="color:var(--red);"></i> <strong>Zeit ist Hirn</strong></p>
 </div>
 
-<div class="card">
-<h2>Sales Page</h2>
-<p><strong>Product:</strong> Neuroguard Clinical Prognosis Platform</p>
-<p><strong>Price:</strong> CHF 1,200,000 (fixed)</p>
-<ul>
-<li>Full software and source code</li>
-<li>AI models (LSTM, Graph Convolutional Networks)</li>
-<li>Documentation and technical dossier</li>
-<li>Anonymized datasets</li>
-<li>Full IP transfer to buyer</li>
-</ul>
-<p><strong>Ready for:</strong> Deployment in clinical or research settings in Switzerland or internationally.</p>
+<!-- FOLIE 3 -->
+<div class="slide" id="slide3">
+  <h1>Die Lösung: Neuroguard</h1>
+  <h2 style="color:var(--blue-dark);">Überlebenswahrscheinlichkeit – <span class="highlight">6–12 Stunden im Voraus</span></h2>
+  <ul>
+    <li>✅ KI-Plattform mit <strong>klinisch interpretierbaren</strong> Risikoindikatoren</li>
+    <li>✅ <strong>Echtzeit-Dashboard</strong> mit farbcodierten Profilen</li>
+    <li>✅ Integration: HL7, CSV, SPSS, API</li>
+    <li>✅ <strong>Frühwarnung</strong> bevor Symptome auftreten</li>
+  </ul>
+  <div class="dashboard">
+    <p><strong>Dashboard-Live-Ansicht:</strong></p>
+    <p>👤 <strong>Patient X</strong> → <span class="risk-high">87 % Risiko in 8 Std.</span> <span class="badge badge-red">HOCH</span></p>
+    <p>👤 Patient Y → <span class="risk-med">42 % Risiko</span> <span class="badge">MITTEL</span></p>
+    <p>👤 Patient Z → <span class="risk-low">12 % Risiko</span> <span class="badge badge-green">NIEDRIG</span></p>
+  </div>
+</div>
 
-<a href="/static/Neuroguard_Professional_Package_v2.pdf" class="button" target="_blank" download>Download Full Professional Package (PDF)</a>
+<!-- FOLIE 4 -->
+<div class="slide" id="slide4">
+  <h1>Klinischer USP</h1>
+  <p style="font-size:1.3rem; margin-bottom:20px;"><strong>Erste Plattform weltweit: Prognose <u>nur aus ICP-Daten</u></strong></p>
+  <table>
+    <tr><th>Feature</th><th>Neuroguard</th><th>Klassische Scores</th></tr>
+    <tr><td>Echtzeit-Vorhersage</td><td>✅ 6–12 Std.</td><td>❌ Statisch</td></tr>
+    <tr><td>Klinisch interpretierbar</td><td>✅</td><td>❌ Blackbox</td></tr>
+    <tr><td>Frühwarnung</td><td>✅ <strong>88 %</strong></td><td>❌</td></tr>
+    <tr><td>AUC</td><td><strong>0.89</strong></td><td>0.65–0.72</td></tr>
+  </table>
+  <div class="chart-placeholder">📊 ROC-Kurve mit <strong>AUC = 0.89</strong> hervorgehoben</div>
+  <p class="quote">"Endlich eine Prognose, der ich vertraue." <br>— <em>Prof. Dr. M., Uniklinik Zürich</em></p>
+</div>
+
+<!-- FOLIE 5 -->
+<div class="slide" id="slide5">
+  <h1>Klinische Validierung</h1>
+  <p style="font-weight:600;">Pilotstudien: <strong>2 Zentren | 50 Patienten | 6 Monate</strong></p>
+  <table>
+    <tr><th>Metrik</th><th>Neuroguard</th><th>Klassische Scores</th></tr>
+    <tr><td>Frühwarnung ICP-Trends</td><td><strong>88 %</strong></td><td>42 %</td></tr>
+    <tr><td>Re-Intervention-Unterstützung</td><td><strong>76 %</strong></td><td>51 %</td></tr>
+    <tr><td>Reduktion unnötiger CTs</td><td><strong>–34 %</strong></td><td>–</td></tr>
+  </table>
+  <div class="chart-placeholder">📊 Balkendiagramm: Neuroguard vs. GCS/APACHE</div>
+  <p class="quote">"Neuroguard erkennt, was wir übersehen."</p>
+</div>
+
+<!-- FOLIE 6 -->
+<div class="slide" id="slide6">
+  <h1>Markt & Zielkunden</h1>
+  <ul>
+    <li><strong>TAM:</strong> 3,2 Mrd. USD (Neuro-ICU weltweit)</li>
+    <li><strong>SAM (DACH+EU):</strong> 500 Mio. CHF</li>
+    <li><strong>SOM (Jahr 3):</strong> 3 Mio. CHF bei 100 Kliniken</li>
+  </ul>
+  <h2 style="margin-top:25px;">Zielkunden:</h2>
+  <ol>
+    <li>Universitätskliniken</li>
+    <li>Neurochirurgische Intensivstationen</li>
+    <li>MedTech-Partner (API-Lizenz)</li>
+  </ol>
+  <div class="chart-placeholder">🗺️ Karte: DACH + EU mit roten Punkten (Zielkliniken)</div>
+  <p style="text-align:center; margin-top:15px;">🇨🇭 Schweiz → 🇩🇪 Deutschland → 🇪🇺 EU</p>
+</div>
+
+<!-- FOLIE 7 -->
+<div class="slide" id="slide7">
+  <h1>Wettbewerbsvorteil</h1>
+  <table>
+    <tr><th></th><th>Neuroguard</th><th>Wettbewerber A</th><th>Wettbewerber B</th></tr>
+    <tr><td>Nur ICP-Daten</td><td>✅</td><td>❌</td><td>❌</td></tr>
+    <tr><td>Interpretierbar</td><td>✅</td><td>Teilweise</td><td>❌</td></tr>
+    <tr><td>Echtzeit-Dashboard</td><td>✅</td><td>❌</td><td>✅</td></tr>
+    <tr><td>CE/MDR</td><td>In Planung</td><td>✅</td><td>❌</td></tr>
+    <tr><td>AUC (validiert)</td><td><strong>0.89</strong></td><td>0.81</td><td>0.77</td></tr>
+  </table>
+  <p style="text-align:center; font-size:1.4rem; margin-top:25px; color:var(--blue-dark);">
+    <strong>„Weniger Daten. Mehr Präzision.“</strong>
+  </p>
+</div>
+
+<!-- FOLIE 8 -->
+<div class="slide" id="slide8">
+  <h1>Geschäftsmodell (SaaS)</h1>
+  <p style="font-size:1.2rem; margin-bottom:20px;"><strong>Wiederkehrende Einnahmen – 70 % Bruttomarge</strong></p>
+  <ul>
+    <li><strong>SaaS-Lizenz:</strong> 2.500 CHF / Monat / Klinik</li>
+    <li><strong>API (MedTech):</strong> 10.000 CHF / Monat</li>
+    <li><strong>Custom-Analysen:</strong> 5.000–15.000 CHF / Projekt</li>
+  </ul>
+  <h2 style="margin-top:20px;">Jahr 3:</h2>
+  <p style="font-size:1.3rem; color:var(--blue-dark);"><strong>100 Kliniken → 3 Mio. CHF ARR</strong></p>
+  <div class="chart-placeholder">💰 Einnahmen-Fluss: Klinik → SaaS → API → Forschung</div>
+</div>
+
+<!-- FOLIE 9 -->
+<div class="slide" id="slide9">
+  <h1>Entwicklungsstand & Roadmap</h1>
+  <table>
+    <tr><th>Meilenstein</th><th>Status</th><th>Q1 2026</th></tr>
+    <tr><td>Prototyp + AUC-Reports</td><td>✅</td><td>–</td></tr>
+    <tr><td>Patentanmeldung</td><td>In Vorbereitung</td><td>✅</td></tr>
+    <tr><td>CE/MDR-Zertifizierung</td><td>In Planung</td><td>✅</td></tr>
+    <tr><td>Multicenter-Studie (200 Pat.)</td><td>–</td><td>✅</td></tr>
+  </table>
+  <div class="chart-placeholder">⏳ Timeline mit grünen Haken</div>
+  <p style="text-align:center; margin-top:15px;"><i class="fas fa-stethoscope icon"></i> + <i class="fas fa-microchip icon"></i></p>
+</div>
+
+<!-- FOLIE 10 -->
+<div class="slide" id="slide10">
+  <h1>Investmentbedarf</h1>
+  <p style="font-size:1.4rem; color:var(--blue-dark);"><strong>1,2 Mio. CHF Seed</strong></p>
+  <table>
+    <tr><th>Verwendung</th><th>Anteil</th><th>Betrag</th></tr>
+    <tr><td>Zertifizierung & Studie</td><td>40 %</td><td>480k</td></tr>
+    <tr><td>KI & Plattform</td><td>30 %</td><td>360k</td></tr>
+    <tr><td>Business Development</td><td>20 %</td><td>240k</td></tr>
+    <tr><td>IP & Recht</td><td>10 %</td><td>120k</td></tr>
+  </table>
+  <div class="chart-placeholder">📊 Kreisdiagramm Kapitalverteilung</div>
+  <p style="margin-top:20px; color:var(--blue-dark);"><strong>ROI:</strong> Break-even Monat 30 | 5x bei Exit</p>
+</div>
+
+<!-- FOLIE 11 -->
+<div class="slide" id="slide11">
+  <h1>Skalierbarkeit & Exit</h1>
+  <p style="font-size:1.2rem;"><strong>Skalierbar auf 500+ Kliniken weltweit</strong></p>
+  <ul>
+    <li><strong>Jahr 3:</strong> 100 Kliniken → <strong>3 Mio. CHF ARR</strong></li>
+    <li><strong>Jahr 5:</strong> 300 Kliniken → <strong>9 Mio. CHF ARR</strong></li>
+    <li><strong>Exit:</strong> Übernahme durch Siemens, Medtronic, Philips</li>
+    <li><strong>Series A Bewertung:</strong> 8–10 Mio. CHF (2027)</li>
+  </ul>
+  <div class="chart-placeholder">📈 Wachstumskurve + Pfeil → „EXIT“</div>
+</div>
+
+<!-- FOLIE 12 -->
+<div class="slide" id="slide12">
+  <h1>Vision & Team</h1>
+  <p class="quote" style="font-size:1.3rem;">"Von reaktiver Medizin zu <strong>proaktiver Prävention</strong>."</p>
+  <h2 style="margin-top:30px; color:var(--blue-dark);">Vision:</h2>
+  <p style="font-size:1.3rem; margin:15px 0;"><strong>Neuroguard wird Standard in jeder Neuro-ICU weltweit.</strong></p>
+  <h2 style="margin-top:30px;">Team:</h2>
+  <p><strong>Cemalettin G.</strong> – Founder & CEO<br><em>Ex-Neurochirurg, Uniklinik Zürich, 8 Jahre ICP-Forschung</em></p>
+  <p style="margin-top:15px;"><strong>Oktay T.</strong> – Co-Founder & CTO<br><em>KI-Engineer, ETH Zürich, 3 Patente in ML-Medizin</em></p>
+  <p style="text-align:center; margin-top:40px; font-size:1.4rem; color:var(--blue-dark);">
+    <strong>„Wir schützen das Gehirn – bevor es zu spät ist.“</strong>
+  </p>
+  <div style="text-align:center; margin-top:30px; font-size:2rem;">
+    <i class="fas fa-brain" style="color:var(--blue);"></i>
+  </div>
+</div>
+
+<div class="footer">
+  <p>© 2025 Neuroguard | <a href="mailto:cemalettin@neuroguard.ai" style="color:var(--blue);">Kontakt aufnehmen</a> | <strong>Strg+P → Als PDF speichern</strong></p>
 </div>
 
 </div>
+
+<script>
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
